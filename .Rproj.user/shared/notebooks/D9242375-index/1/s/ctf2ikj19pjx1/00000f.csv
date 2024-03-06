@@ -1,0 +1,5 @@
+"0","knitr::opts_chunk$set(warning = FALSE,"
+"0","                      message = FALSE)"
+"0","library(tidyverse)"
+"0","library(rmarkdown)"
+"0","library(knitr)"

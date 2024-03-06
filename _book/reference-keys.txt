@@ -1,0 +1,10 @@
+introducción
+datos-de-estudio
+registros-independientes
+preparación-de-datos
+tasa-de-registro
+datos-climatológicos
+probando-open-meteo
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
+exploración-de-datos
+origen-y-utilidad-de-los-datos
