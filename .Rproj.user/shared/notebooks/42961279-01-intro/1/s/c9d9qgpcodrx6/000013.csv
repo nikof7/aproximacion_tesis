@@ -1,3 +1,0 @@
-"0","datos <- datos %>% "
-"0","  filter(type == ""Mammal"") %>% "
-"0","  select(sitio = site, sistema = station, camara = camera, datetime, sp = species)"

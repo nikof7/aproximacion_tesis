@@ -195,7 +195,8 @@ registros_por_camara_por_especie_por_dia <- datos %>%
 datos2 <- datos %>% 
   mutate(date = as_date(datetime)) %>% 
   left_join(datos_clima, join_by(sitio, date)) %>% 
-  mutate(tiempo_decimal = hour(datetime) + minute(datetime)/60 + second(datetime)/3600)
+  mutate(tiempo_decimal = hour(datetime) + minute(datetime)/60 + second(datetime)/3600) %>% 
+  drop_na()
 ```
 
 Graficos:
@@ -203,16 +204,42 @@ Graficos:
 
 ```{r}
 ggplot(data = datos2) + 
-  geom_boxplot(aes(x = sp, y = tiempo_decimal))
+  geom_point(aes(x = sp, y = tiempo_decimal), size = 2, colour = "navy", stroke = 0, alpha = 0.05) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+```{r}
+ggplot(data = datos2) + 
+  geom_point(aes(x = sp, y = tiempo_decimal), size = 2, colour = "navy", stroke = 0, alpha = 0.05) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 ```{r}
 datos3 <- datos2 %>% 
-  filter(sp == "Mgou")
+  filter(sp == "Mgou") %>% 
+  drop_na()
 
-ggplot(data = datos2) + 
-  geom_point(aes(x = tiempo_decimal, y = daily_temperature_2m_min))
+ggplot(data = datos3) + 
+  geom_point(aes(x = daily_wind_speed_10m_mean, y = daily_precipitation_hours))
 ```
+
+```{r}
+datos4 <- datos2 %>%
+  filter(sp %in% c("Aaxi", "Mgou", "Lgym", "Ctho", "Btau", "Cfam", "Lwie", "Lgeo")) %>% 
+  mutate(familia = case_when(
+    sp %in% c("Aaxi", "Mgou") ~ "Cervidae",
+    sp %in% c("Lgym", "Ctho") ~ "Canidae",
+    sp %in% c("Lgeo", "Lwie") ~ "Felinae",
+    sp %in% c("Btau", "Cfam") ~ "Domestico"
+  )) %>% 
+  group_by(familia) %>% 
+  order(familia)
+
+ggplot(data = datos4) +
+  geom_point(aes(x = sp, y = tiempo_decimal), size = 2, stroke = 0, alpha = 0.05) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
 
 ### Origen y utilidad de los datos
 

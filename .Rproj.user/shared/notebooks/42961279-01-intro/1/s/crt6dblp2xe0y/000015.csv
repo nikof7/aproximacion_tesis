@@ -1,4 +1,0 @@
-"0","datos_clima %>% "
-"0","  select(daily_weather_code) %>% "
-"0","  distinct() %>% "
-"0","  arrange(daily_weather_code)"
