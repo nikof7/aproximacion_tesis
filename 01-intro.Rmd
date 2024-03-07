@@ -31,6 +31,9 @@ Se utilizan los datos obtenidos de ...
 
 ```{r}
 load("datos/planilla_general.RData")
+library(tidyverse)
+library(rmarkdown)
+library(knitr)
 ```
 
 ### Preparación de datos
@@ -190,7 +193,7 @@ Se intentará visualizar los datos de los registros con alguna de estas variable
 registros_por_camara_por_especie_por_dia <- datos %>%
   mutate(fecha = as_date(datetime)) %>% 
   group_by(sitio, camara, fecha, sp) %>% 
-  summarise(registros = n(), keep())
+  summarise(registros = n())
 
 datos2 <- datos %>% 
   mutate(date = as_date(datetime)) %>% 
@@ -201,12 +204,6 @@ datos2 <- datos %>%
 
 Graficos:
 
-
-```{r}
-ggplot(data = datos2) + 
-  geom_point(aes(x = sp, y = tiempo_decimal), size = 2, colour = "navy", stroke = 0, alpha = 0.05) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
 
 ```{r}
 ggplot(data = datos2) + 
@@ -232,16 +229,43 @@ datos4 <- datos2 %>%
     sp %in% c("Lgeo", "Lwie") ~ "Felinae",
     sp %in% c("Btau", "Cfam") ~ "Domestico"
   )) %>% 
-  group_by(familia) %>% 
-  order(familia)
+  group_by(familia)
 
-ggplot(data = datos4) +
-  geom_point(aes(x = sp, y = tiempo_decimal), size = 2, stroke = 0, alpha = 0.05) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+a <- datos4 %>% 
+  filter(familia == "Cervidae")
+  
+
+ggplot(data = a) +
+  geom_point(aes(x = tiempo_decimal, y = camara, colour = sp), size = 3, alpha = 0.5) +
+  theme(axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        axis.ticks.y=element_blank())
 ```
 
+```{r}
+a <- datos4 %>% 
+  filter(familia == "Canidae")
+  
 
-### Origen y utilidad de los datos
+ggplot(data = a) +
+  geom_point(aes(x = tiempo_decimal, y = camara, colour = sp), size = 3, alpha = 0.5) +
+  theme(axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
 
-De donde vienen los codigos del clima, los datos, etc? es confiable?
+```{r}
+a <- datos4 %>% 
+  filter(sp %in% c("Cfam", "Ctho", "Lgym"))
+  
+library(RColorBrewer)
+hexColors <- c("#ff006e", "#8338ec", "#ffbe0b")
+colScale <- scale_colour_manual(name = "sp", values = hexColors)
+
+ggplot(data = a) +
+  geom_point(aes(x = tiempo_decimal, y = camara, colour = sp), size = 3, alpha = 0.5) +
+  theme(axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        axis.ticks.y=element_blank()) + colScale
+```
 

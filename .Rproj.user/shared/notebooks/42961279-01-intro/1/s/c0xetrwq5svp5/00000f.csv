@@ -1,1 +1,4 @@
 "0","load(""datos/planilla_general.RData"")"
+"0","library(tidyverse)"
+"0","library(rmarkdown)"
+"0","library(knitr)"

@@ -347,6 +347,63 @@
             "type": "book"
         },
         {
+            "URL": "https://shiny.posit.co/",
+            "author": [
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Sievert",
+                    "given": "Carson"
+                },
+                {
+                    "family": "Schloerke",
+                    "given": "Barret"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allen",
+                    "given": "Jeff"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Dipert",
+                    "given": "Alan"
+                },
+                {
+                    "family": "Borges",
+                    "given": "Barbara"
+                }
+            ],
+            "id": "R-shiny",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 1.8.0",
+            "title": "Shiny: Web application framework for r",
+            "title-short": "Shiny",
+            "type": "book"
+        },
+        {
             "URL": "https://stringr.tidyverse.org",
             "author": [
                 {
@@ -440,6 +497,31 @@
             "note": "R package version 2.0.0, https://github.com/tidyverse/tidyverse",
             "title": "Tidyverse: Easily install and load the tidyverse",
             "title-short": "Tidyverse",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/tufte",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                }
+            ],
+            "id": "R-tufte",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 0.13",
+            "title": "Tufte: Tufte’s styles for r markdown documents",
+            "title-short": "Tufte",
             "type": "book"
         },
         {
